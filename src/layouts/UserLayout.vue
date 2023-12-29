@@ -1,6 +1,9 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import { useRouter } from 'vue-router'
+defineProps({
+  query:String,
+})
 
 const isLogin = ref(false)
 
@@ -19,13 +22,22 @@ const logout = () => {
   localStorage.removeItem('login')
   window.location.reload()
 }
+const search = ref(''); 
+watch(search, (val) => {
+  console.log(val)
+})
+const handleEnter = (e) => {
+  if (e.keyCode === 13 && search.value) {
+    router.push({ path: '/search', query: { q: search.value } })
+  }
+}
 </script>
 
 <template>
   <div class="container max-w-screen-xl mx-auto">
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <a class="btn btn-ghost text-xl">Ezcommerce</a>
+        <RouterLink to="/" class="btn btn-ghost text-xl">Ezcommerce</RouterLink>
       </div>
       <div class="flex-none gap-2">
         <div class="form-control">
@@ -33,6 +45,8 @@ const logout = () => {
             type="text"
             placeholder="Search"
             class="input input-bordered w-24 md:w-auto"
+            v-model="search"
+            @keyup="handleEnter"
           />
         </div>
 

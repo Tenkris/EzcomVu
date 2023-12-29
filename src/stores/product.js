@@ -45,8 +45,8 @@ export const useUserProductStore = defineStore('user-product', {
   },
   actions: {
     // This is an action that adds a product to the list
-    addProduct(product) {
-      this.list.push(product)
-    },
+    filterProduct(searchname){
+      return this.list.filter( product => product.name.includes(searchname));
+    }
   },
 })
