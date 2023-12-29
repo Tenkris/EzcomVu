@@ -1,5 +1,5 @@
 <script setup>
-import UserLayout from "@/layouts/UserLayout.vue";
+import UserLayout from '@/layouts/UserLayout.vue'
 </script>
 
 <template>
