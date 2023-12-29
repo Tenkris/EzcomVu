@@ -1,0 +1,52 @@
+import { defineStore } from 'pinia'
+
+export const useUserProductStore = defineStore('user-product', {
+  state: () => ({
+    list: [
+      {
+        name: 'mountain1',
+        imageUrl: 'https://picsum.photos/id/235/200/300',
+        quantity: 10,
+        about: 'testt',
+        status: 'open',
+        price: 100,
+      },
+      {
+        name: 'mountain2',
+        imageUrl: 'https://picsum.photos/seed/picsum/200/300',
+        quantity: 10,
+        about: 'testt',
+        status: 'open',
+        price: 100,
+      },
+      {
+        name: 'stupid dog',
+        imageUrl: 'https://picsum.photos/id/237/200/300',
+        quantity: 10,
+        about: 'testt',
+        status: 'open',
+        price: 100,
+      },
+      {
+        name: 'house and mountain',
+        imageUrl: 'https://picsum.photos/id/236/200/300',
+        quantity: 10,
+        about: 'testt',
+        status: 'open',
+        price: 100,
+      },
+    ],
+  }),
+  getters: {
+    // This is a getter that returns the number of products
+    productCount(state) {
+      return state.list.length
+    },
+  },
+  actions: {
+    // This is an action that adds a product to the list
+    addProduct(product) {
+      this.list.push(product)
+    },
+  },
+})
