@@ -1,25 +1,58 @@
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watch , reactive } from 'vue'
 import { useRouter } from 'vue-router'
 defineProps({
   query:String,
 })
 
 const isLogin = ref(false)
-
+const userData = reactive({
+  name: '',
+  email: '',
+  imageUrl: ''
+})
 const router = useRouter()
 onMounted(() => {
-  if (localStorage.getItem('login')) {
+   if (localStorage.getItem('login')) {
     isLogin.value = true
+    const userProfile = JSON.parse(localStorage.getItem('user-profile'))
+    userData.name = userProfile.name
+    userData.email = userProfile.email
+    userData.imageUrl = userProfile.imageUrl
+    console.log('userdata', userData)
   }
 })
 const login = () => {
+  // Mock user data or get it from a login process
+  const mockUserProfile = {
+    name: 'John Doe',
+    email: 'john.doe@example.com',
+    imageUrl: "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+  }
+
+  // Update reactive state
   isLogin.value = true
+  userData.name = mockUserProfile.name
+  userData.email = mockUserProfile.email
+  userData.imageUrl = mockUserProfile.imageUrl
+
+  // Store user data in localStorage
   localStorage.setItem('login', true)
+  localStorage.setItem('user-profile', JSON.stringify(mockUserProfile))
 }
+
 const logout = () => {
+  // Clear user data and reactive state
   isLogin.value = false
+  userData.name = ''
+  userData.email = ''
+  userData.imageUrl = ''
+
+  // Remove user data from localStorage
   localStorage.removeItem('login')
+  localStorage.removeItem('user-profile')
+
+  // Reload the window
   window.location.reload()
 }
 const search = ref(''); 
@@ -93,7 +126,7 @@ const handleEnter = (e) => {
             <div class="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                :src = "userData.imageUrl"
               />
             </div>
           </div>
