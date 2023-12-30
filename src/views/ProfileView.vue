@@ -14,6 +14,17 @@ const userData = reactive({
 })
 const Isvalid = ref(false)
 onMounted(() => {
+  if (localStorage.getItem('showToastAfterReload') === 'true') {
+        // Show toast message
+        // Replace with your method to show toast
+        eventStore.popupMessage(
+          'success',
+          'Profile updated successfully'
+        )
+
+        // Clear the flag
+        localStorage.removeItem('showToastAfterReload');
+  }
   const userProfile = localStorage.getItem('user-profile')
   if (userProfile) {
     const userProfileJson = JSON.parse(userProfile)
@@ -46,15 +57,9 @@ const updateProfile = () => {
   localStorage.setItem('user-profile', JSON.stringify(userData))
   console.log('userData', userData)
   // show toast 
-  eventStore.popupMessage(
-    'Profile updated successfully',
-    'success'
-  )
-  setTimeout(() => {
-    window.location.reload() 
-  }, 3000);
+  localStorage.setItem('showToastAfterReload', 'true');
+  window.location.reload() 
 
-  
 }
 </script>
 <template>
