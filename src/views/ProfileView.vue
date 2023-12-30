@@ -1,6 +1,8 @@
 <script setup>
 import UserLayout from '@/layouts/UserLayout.vue'
-import { reactive, onMounted, watch } from 'vue'
+import { reactive, onMounted, watch ,ref} from 'vue'
+import {useEventStore} from '@/stores/event'
+const eventStore = useEventStore()
 const userForm = [
   { name: 'Email', field: 'email' },
   { name: 'Name', field: 'name' }
@@ -10,6 +12,7 @@ const userData = reactive({
   email: '',
   name: ''
 })
+const Isvalid = ref(false)
 onMounted(() => {
   const userProfile = localStorage.getItem('user-profile')
   if (userProfile) {
@@ -42,7 +45,16 @@ const handleFileChange = (e) => {
 const updateProfile = () => {
   localStorage.setItem('user-profile', JSON.stringify(userData))
   console.log('userData', userData)
-  window.location.reload() 
+  // show toast 
+  eventStore.popupMessage(
+    'Profile updated successfully',
+    'success'
+  )
+  setTimeout(() => {
+    window.location.reload() 
+  }, 3000);
+
+  
 }
 </script>
 <template>
