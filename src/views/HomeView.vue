@@ -1,10 +1,10 @@
 <script setup>
 import UserLayout from '@/layouts/UserLayout.vue'
 import ProductList from '@/components/productList.vue'
-import {useUserProductStore} from '@/stores/product'
-const userProductStore = useUserProductStore();
-console.log(userProductStore.list) 
-const addToCart = ()=>{
+import { useUserProductStore } from '@/stores/product'
+const userProductStore = useUserProductStore()
+console.log(userProductStore.list)
+const addToCart = () => {
   console.log('add to cart')
 }
 </script>

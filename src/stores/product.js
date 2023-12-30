@@ -9,7 +9,7 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 10,
         about: 'testt',
         status: 'open',
-        price: 100,
+        price: 100
       },
       {
         name: 'mountain2',
@@ -17,7 +17,7 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 10,
         about: 'testt',
         status: 'open',
-        price: 100,
+        price: 100
       },
       {
         name: 'stupid dog',
@@ -25,7 +25,7 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 10,
         about: 'testt',
         status: 'open',
-        price: 100,
+        price: 100
       },
       {
         name: 'house and mountain',
@@ -33,20 +33,20 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 10,
         about: 'testt',
         status: 'open',
-        price: 100,
-      },
-    ],
+        price: 100
+      }
+    ]
   }),
   getters: {
     // This is a getter that returns the number of products
     productCount(state) {
       return state.list.length
-    },
+    }
   },
   actions: {
     // This is an action that adds a product to the list
-    filterProduct(searchname){
-      return this.list.filter( product => product.name.includes(searchname));
+    filterProduct(searchname) {
+      return this.list.filter(product => product.name.includes(searchname))
     }
-  },
+  }
 })

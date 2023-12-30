@@ -4,7 +4,6 @@ defineProps({
   products: Array,
   addToCart: Function
 })
-
 </script>
 
 <template>
@@ -14,7 +13,11 @@ defineProps({
     <div v-for="(product, index) in products" :key="index">
       <div class="card card-compact bg-base-100 shadow-xl w-full">
         <figure>
-            <img :src="product.imageUrl" alt="Product Image" class=" w-full h-full md:h-2/3" />
+          <img
+            :src="product.imageUrl"
+            alt="Product Image"
+            class="w-full h-full md:h-2/3"
+          />
         </figure>
         <div class="card-body">
           <h2 class="card-title">{{ product.name }}</h2>

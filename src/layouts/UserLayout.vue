@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted, watch , reactive } from 'vue'
+import { ref, onMounted, watch, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 defineProps({
-  query:String,
+  query: String
 })
 
 const isLogin = ref(false)
@@ -13,7 +13,7 @@ const userData = reactive({
 })
 const router = useRouter()
 onMounted(() => {
-   if (localStorage.getItem('login')) {
+  if (localStorage.getItem('login')) {
     isLogin.value = true
     const userProfile = JSON.parse(localStorage.getItem('user-profile'))
     userData.name = userProfile.name
@@ -27,7 +27,8 @@ const login = () => {
   const mockUserProfile = {
     name: 'John Doe',
     email: 'john.doe@example.com',
-    imageUrl: "https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+    imageUrl:
+      'https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg'
   }
 
   // Update reactive state
@@ -51,15 +52,20 @@ const logout = () => {
   // Remove user data from localStorage
   localStorage.removeItem('login')
   localStorage.removeItem('user-profile')
-
   // Reload the window
-  window.location.reload()
+  if(router.currentRoute.value.path !== '/'){
+    router.push({ path: '/' })
+  }
+  else{
+    window.location.reload()
+  }
+  
 }
-const search = ref(''); 
-watch(search, (val) => {
+const search = ref('')
+watch(search, val => {
   console.log(val)
 })
-const handleEnter = (e) => {
+const handleEnter = e => {
   if (e.keyCode === 13 && search.value) {
     router.push({ path: '/search', query: { q: search.value } })
   }
@@ -126,7 +132,7 @@ const handleEnter = (e) => {
             <div class="w-10 rounded-full">
               <img
                 alt="Tailwind CSS Navbar component"
-                :src = "userData.imageUrl"
+                :src="userData.imageUrl"
               />
             </div>
           </div>
@@ -135,9 +141,13 @@ const handleEnter = (e) => {
             class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
           >
             <li>
-              <a class="justify-between"> Profile </a>
+              <RouterLink to="/profile" class="justify-between">
+                Profile
+              </RouterLink>
             </li>
-            <li><a @click="logout">Logout</a></li>
+            <li> 
+                <a @click="logout">Logout</a>
+            </li>
           </ul>
         </div>
         <div v-else class="btn btn-ghost" @click="login">Login</div>
