@@ -6,7 +6,7 @@ export const useEventStore = defineStore('event', {
     data: {}
   }),
   actions: {
-    popupMessage (status, message) {
+    popupMessage(status, message) {
       this.data = {
         status,
         message
@@ -16,7 +16,7 @@ export const useEventStore = defineStore('event', {
         this.clearPopup()
       }, 3000)
     },
-    clearPopup () {
+    clearPopup() {
       this.alert = false
       this.data = {}
     }

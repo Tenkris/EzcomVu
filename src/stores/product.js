@@ -6,7 +6,7 @@ export const useUserProductStore = defineStore('user-product', {
       {
         name: 'mountain1',
         imageUrl: 'https://picsum.photos/id/235/200/300',
-        quantity: 10,
+        quantity: 1,
         about: 'testt',
         status: 'open',
         price: 100
@@ -14,7 +14,7 @@ export const useUserProductStore = defineStore('user-product', {
       {
         name: 'mountain2',
         imageUrl: 'https://picsum.photos/seed/picsum/200/300',
-        quantity: 10,
+        quantity: 1,
         about: 'testt',
         status: 'open',
         price: 100
@@ -22,7 +22,7 @@ export const useUserProductStore = defineStore('user-product', {
       {
         name: 'stupid dog',
         imageUrl: 'https://picsum.photos/id/237/200/300',
-        quantity: 10,
+        quantity: 1,
         about: 'testt',
         status: 'open',
         price: 100
@@ -30,7 +30,7 @@ export const useUserProductStore = defineStore('user-product', {
       {
         name: 'house and mountain',
         imageUrl: 'https://picsum.photos/id/236/200/300',
-        quantity: 10,
+        quantity: 1,
         about: 'testt',
         status: 'open',
         price: 100

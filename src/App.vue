@@ -7,10 +7,10 @@ import Toast from '@/components/Toast.vue'
 
 <template>
   <Toast
-      v-if="eventStore.alert"
-      :status="eventStore.data.status"
-      :message="eventStore.data.message"
-    >
-    </Toast>
+    v-if="eventStore.alert"
+    :status="eventStore.data.status"
+    :message="eventStore.data.message"
+  >
+  </Toast>
   <RouterView />
 </template>
