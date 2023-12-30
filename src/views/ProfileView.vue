@@ -26,6 +26,24 @@ watch(
   },
   { deep: true }
 )
+
+const handleFileChange = (e) => {
+  const file = e.target.files[0]
+
+  if(file) {
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
+    reader.onload = () => {
+      userData.imageUrl = reader.result
+    }
+    
+  }
+}
+const updateProfile = () => {
+  localStorage.setItem('user-profile', JSON.stringify(userData))
+  console.log('userData', userData)
+  window.location.reload() 
+}
 </script>
 <template>
   <UserLayout>
@@ -42,6 +60,7 @@ watch(
         <input
           type="file"
           class="file-input file-input-bordered file-input-xs w-full max-w-xs mt-5"
+          @change="handleFileChange" 
         />
         <div>
           <div v-for="item in userForm" class="form-control w-full">
@@ -53,11 +72,11 @@ watch(
               type="text"
               placeholder="Type here"
               class="input input-bordered w-full"
-              v-model="userData[item.field]"
+              v-model="userData[item.field]" 
             />
           </div>
         </div>
-        <button class="btn btn-accent mt-5 w-full">UpdateProfile</button>
+        <button class="btn btn-accent mt-5 w-full" @click=" updateProfile">UpdateProfile</button>
       </div>
     </div>
   </UserLayout>
