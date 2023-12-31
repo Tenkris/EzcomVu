@@ -17,7 +17,7 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 1,
         about: 'testt',
         status: 'open',
-        price: 100
+        price:200
       },
       {
         name: 'stupid dog',
@@ -25,7 +25,7 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 1,
         about: 'testt',
         status: 'open',
-        price: 100
+        price: 300
       },
       {
         name: 'house and mountain',
@@ -33,7 +33,7 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 1,
         about: 'testt',
         status: 'open',
-        price: 100
+        price: 400
       }
     ]
   }),

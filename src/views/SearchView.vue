@@ -4,6 +4,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useUserProductStore } from '@/stores/product'
 import ProductList from '@/components/productList.vue'
+import { useUserCartStore } from '@/stores/cart'
 const userProductStore = useUserProductStore()
 const route = useRoute()
 const searchText = ref('')
@@ -20,6 +21,13 @@ watch(() => route.query.q, updateSearchText, { immediate: true })
 onMounted(() => {
   updateSearchText()
 })
+const userCartStore = useUserCartStore()
+const addToCart = product => {
+  console.log('add to cart')
+  console.log('product', product)
+  userCartStore.addToCart(product)
+  console.log(userCartStore.items)
+}
 </script>
 
 <template>
@@ -30,7 +38,7 @@ onMounted(() => {
       </h1>
     </div>
     <div v-if="filterProducts.length > 0">
-      <ProductList :products="filterProducts"> </ProductList>
+      <ProductList :products="filterProducts" :addToCart="addToCart"> </ProductList>
     </div>
     <div class="m-10" v-else>
       <div class="text-center text-3xl">Product not found</div>
