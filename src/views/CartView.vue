@@ -84,7 +84,7 @@ const removeItemInCart = index => {
               <div class="font-bold">ราคาทั้งสิ้น</div>
               <div>{{ cartStore.summaryPrice }} ฿</div>
             </div>
-            <RouterLink to="/" class="btn btn-primary w-full">
+            <RouterLink to="/checkout" class="btn btn-primary w-full">
               ชำระเงิน
             </RouterLink>
           </div>
