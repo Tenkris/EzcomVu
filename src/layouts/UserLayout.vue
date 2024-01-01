@@ -1,12 +1,12 @@
 <script setup>
 import { ref, onMounted, watch, reactive } from 'vue'
 import { useRouter } from 'vue-router'
-import {useUserCartStore} from '@/stores/cart'
+import { useUserCartStore } from '@/stores/cart'
 defineProps({
   query: String
 })
 
-const cartStore = useUserCartStore() 
+const cartStore = useUserCartStore()
 const isLogin = ref(false)
 const userData = reactive({
   name: '',
@@ -106,7 +106,9 @@ const handleEnter = e => {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span class="badge badge-sm indicator-item">{{ cartStore.quantity }}</span>
+              <span class="badge badge-sm indicator-item">{{
+                cartStore.quantity
+              }}</span>
             </div>
           </div>
           <div
@@ -114,10 +116,16 @@ const handleEnter = e => {
             class="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div class="card-body">
-              <span class="font-bold text-lg">{{ cartStore.quantity }} Items</span>
-              <span class="text-info">Subtotal: ${{ cartStore.summaryPrice }}</span>
+              <span class="font-bold text-lg"
+                >{{ cartStore.quantity }} Items</span
+              >
+              <span class="text-info"
+                >Subtotal: ${{ cartStore.summaryPrice }}</span
+              >
               <div class="card-actions">
-                <button class="btn btn-primary btn-block">View cart</button>
+                <RouterLink to="/cart">
+                  <button class="btn btn-primary btn-block">View cart</button>
+                </RouterLink>
               </div>
             </div>
           </div>

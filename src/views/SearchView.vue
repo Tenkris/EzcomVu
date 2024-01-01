@@ -38,7 +38,8 @@ const addToCart = product => {
       </h1>
     </div>
     <div v-if="filterProducts.length > 0">
-      <ProductList :products="filterProducts" :addToCart="addToCart"> </ProductList>
+      <ProductList :products="filterProducts" :addToCart="addToCart">
+      </ProductList>
     </div>
     <div class="m-10" v-else>
       <div class="text-center text-3xl">Product not found</div>

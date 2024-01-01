@@ -3,12 +3,12 @@ import { RouterLink, RouterView } from 'vue-router'
 import { useEventStore } from '@/stores/event'
 const eventStore = useEventStore()
 import Toast from '@/components/Toast.vue'
-import { onMounted } from 'vue';
-import { useUserCartStore } from '@/stores/cart' 
-const userCartStore = useUserCartStore() 
-onMounted(()=>{
-  userCartStore.loadCart();
-  console.log('AppView',userCartStore.items)
+import { onMounted } from 'vue'
+import { useUserCartStore } from '@/stores/cart'
+const userCartStore = useUserCartStore()
+onMounted(() => {
+  userCartStore.loadCart()
+  console.log('AppView', userCartStore.items)
 })
 </script>
 

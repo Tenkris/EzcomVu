@@ -17,7 +17,7 @@ export const useUserProductStore = defineStore('user-product', {
         quantity: 1,
         about: 'testt',
         status: 'open',
-        price:200
+        price: 200
       },
       {
         name: 'stupid dog',

@@ -18,7 +18,7 @@ export const useUserCartStore = defineStore('user-cart', {
   actions: {
     loadCart() {
       const cartItem = localStorage.getItem('cart-item')
-      console.log("Hello",cartItem)
+      console.log('Hello', cartItem)
       if (cartItem) {
         this.items = JSON.parse(cartItem)
       }
