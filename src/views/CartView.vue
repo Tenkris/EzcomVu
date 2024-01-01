@@ -1,7 +1,8 @@
 <script setup>
 import UserLayout from '@/layouts/UserLayout.vue'
 import { useUserCartStore } from '@/stores/cart'
-
+import CloseIcon from '@/components/CloseIcon.vue'
+import RightIcon from '@/components/CheckIcon.vue'
 const cartStore = useUserCartStore()
 
 const changeQuantity = (event, index) => {
@@ -18,7 +19,7 @@ const removeItemInCart = index => {
     <div class="container mx-auto my-4">
       <h1 class="text-4xl mb-4">Shopping Cart</h1>
       <div class="flex">
-        <section class=" flex-auto w-64">
+        <section class="flex-auto w-64">
           <div
             v-if="cartStore.items.length === 0"
             class="px-8 py-32 bg-base-200"
@@ -60,7 +61,7 @@ const removeItemInCart = index => {
                     </div>
                   </div>
                 </div>
-                <p class="flex">
+                <p class="flex items-center">
                   <RightIcon class="w-5 shrink-0"></RightIcon>
                   <span>In stock</span>
                 </p>
@@ -69,7 +70,7 @@ const removeItemInCart = index => {
           </ul>
         </section>
         <section class="flex-auto w-32 bg-slate-200 p-8">
-          <h2 class="text-2xl">Order summary</h2>
+        <h2 class="text-2xl font-semibold">Order summary</h2>
           <div class="mt-4 m-0 divide-y divide-base-200">
             <div class="flex align-middle justify-between mb-2">
               <div class="font-bold">ราคาสินค้าทั้งหมด</div>
@@ -81,9 +82,7 @@ const removeItemInCart = index => {
             </div>
             <div class="flex align-middle justify-between mb-2">
               <div class="font-bold">ราคาทั้งสิ้น</div>
-              <div>
-                 {{ cartStore.summaryPrice}} ฿
-              </div>
+              <div>{{ cartStore.summaryPrice }} ฿</div>
             </div>
             <RouterLink to="/" class="btn btn-primary w-full">
               ชำระเงิน
