@@ -79,7 +79,7 @@ const handleEnter = e => {
       <div class="flex-1">
         <RouterLink to="/" class="flex items-center btn btn-ghost text-xl">
           <HomeIcon />
-          <button >Ezcommerce</button>
+          <button>Ezcommerce</button>
         </RouterLink>
       </div>
       <div class="flex-none gap-2">
