@@ -2,6 +2,7 @@
 import { ref, onMounted, watch, reactive } from 'vue'
 import { useRouter } from 'vue-router'
 import { useUserCartStore } from '@/stores/cart'
+import HomeIcon from '@/components/HomeIcon.vue'
 defineProps({
   query: String
 })
@@ -76,7 +77,10 @@ const handleEnter = e => {
   <div class="container max-w-screen-xl mx-auto">
     <div class="navbar bg-base-100">
       <div class="flex-1">
-        <RouterLink to="/" class="btn btn-ghost text-xl">Ezcommerce</RouterLink>
+        <RouterLink to="/" class="flex items-center btn btn-ghost text-xl">
+          <HomeIcon />
+          <button >Ezcommerce</button>
+        </RouterLink>
       </div>
       <div class="flex-none gap-2">
         <div class="form-control">

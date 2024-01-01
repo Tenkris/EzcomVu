@@ -39,12 +39,12 @@ const removeItemInCart = index => {
                 <div class="grid grid-cols-2 gap-6 relative">
                   <div>
                     <div class="text-xl font-bold">{{ item.name }}</div>
-                    <div>{{ item.about }}</div>
-                    <div>{{ item.price }} ฿</div>
+                    <div>name : {{ item.about }}</div>
+                    <div>price : {{ item.price }} ฿</div>
                   </div>
                   <div>
                     <select
-                      class="p-1.5"
+                      class="select select-bordered select-secondary text-center"
                       v-model="item.quantity"
                       @change="changeQuantity($event, index)"
                     >
@@ -70,7 +70,7 @@ const removeItemInCart = index => {
           </ul>
         </section>
         <section class="flex-auto w-32 bg-slate-200 p-8">
-        <h2 class="text-2xl font-semibold">Order summary</h2>
+          <h2 class="text-2xl font-semibold">Order summary</h2>
           <div class="mt-4 m-0 divide-y divide-base-200">
             <div class="flex align-middle justify-between mb-2">
               <div class="font-bold">ราคาสินค้าทั้งหมด</div>
