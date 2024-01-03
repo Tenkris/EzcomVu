@@ -29,14 +29,13 @@ const userCheckoutData = reactive({})
 const router = useRouter()
 
 watch(userCheckoutData, (newValue, oldValue) => {
-    // Handle changes to userCheckoutData
-    console.log('userCheckoutData changed:', newValue)
+  // Handle changes to userCheckoutData
+  console.log('userCheckoutData changed:', newValue)
 })
 const checkoutsubmit = () => {
   // submit checkout data
   console.log('userCheckoutData', userCheckoutData)
   userCartStore.checkout(userCheckoutData)
-
 }
 </script>
 
@@ -47,10 +46,7 @@ const checkoutsubmit = () => {
       <div class="flex">
         <section class="flex-auto w-64 bg-base-200">
           <div class="px-8 py-2">
-            <div
-              v-for="form in checkoutForm"
-              class="form-control w-full"
-            >
+            <div v-for="form in checkoutForm" class="form-control w-full">
               <label class="label">
                 <span class="label-text">{{ form.name }}</span>
               </label>
@@ -69,7 +65,11 @@ const checkoutsubmit = () => {
                 v-model="userCheckoutData[form.field]"
               />
             </div>
-            <button class="btn btn-primary w-full mt-4" @click="checkoutsubmit()">
+            <button
+              class="btn btn-primary w-full mt-4"
+              @click="checkoutsubmit()"
+              :disabled="false"
+            >
               ชำระเงิน
             </button>
           </div>
@@ -77,7 +77,11 @@ const checkoutsubmit = () => {
         <section class="flex-auto w-32 bg-slate-200">
           <div class="px-8">
             <ul>
-              <li v-for="(item, index) in userCartStore.items" class="px-2 flex py-6" :key="index">
+              <li
+                v-for="(item, index) in userCartStore.items"
+                class="px-2 flex py-6"
+                :key="index"
+              >
                 <img
                   class="w-40 object-cover object-center"
                   :src="item.imageUrl"
